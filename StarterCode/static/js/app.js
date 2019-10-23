@@ -27,12 +27,15 @@ buildTable(data);
 var characterDateField = d3.select("#datetime");
 var characterFilterButton = d3.select("#filter-btn");
 
-// var resetButton = d3.select("#resetAllButton");
+var resetButton = d3.select("#filter-reset");
 
-// resetButton.on("click", () => {
-//     tableBody.remove();
-//     tableBody = table.append("tbody");
-//     buildTable(data);
+resetButton.on("click", () => {
+    d3.event.preventDefault()
+    tableBody.remove();
+    tableBody = table.append("tbody");
+    buildTable(data);
+
+});
 
 
 
@@ -46,20 +49,6 @@ characterFilterButton.on("click", () => {
 
     buildTable(filterData)
 
-    // tableBody.remove();
-    // tableBody = table.append("tbody");
 
-    // data.filter(ufo => ufo.datetime.toLowerCase().trim() == characterToSearchFor.toLowerCase().trim())
-    //     .forEach(data => {
-    //         var row = tableBody.append("tr");
-
-    //         row.append("td").text(ufo.datetime);
-    //         row.append("td").text(ufo.city);
-    //         row.append("td").text(ufo.state);
-    //         row.append("td").text(ufo.country);
-    //         row.append("td").text(ufo.shape);
-    //         row.append("td").text(ufo.durationMinutes);
-    //         row.append("td").text(ufo.comments);
-    //     });
 
 })
