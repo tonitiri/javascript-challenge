@@ -6,6 +6,7 @@ console.log(data);
 var table = d3.select("#ufo-table");
 var tableBody = table.select("tbody");
 
+// POPULATING TABLE
 function buildTable(ufo_data) {
     tableBody.html("")
     ufo_data.forEach(ufo => {
@@ -22,11 +23,12 @@ function buildTable(ufo_data) {
     })
 
 }
+// FILTERING TABLE BY DATE-SEARCH AND RESETTING
 buildTable(data);
 
 var characterDateField = d3.select("#datetime");
 var characterFilterButton = d3.select("#filter-btn");
-
+var shapeSearchField = d3.select("#shapeSearch");
 var resetButton = d3.select("#filter-reset");
 
 resetButton.on("click", () => {
@@ -37,9 +39,6 @@ resetButton.on("click", () => {
 
 });
 
-
-
-
 characterFilterButton.on("click", () => {
     d3.event.preventDefault()
     var characterDatevalue = characterDateField.property("value");
@@ -49,6 +48,16 @@ characterFilterButton.on("click", () => {
 
     buildTable(filterData)
 
-
-
 })
+
+// FILTERING TABLE BY SHAPES AND RESETTING
+shapeSearchField.on("keyup", () => {
+    d3.event.preventDefault()
+    var dateToSearchFor = shapeSearchField.property("value");
+    console.log(dateToSearchFor);
+
+    var filterDates = data.filter(ufo => ufo.shape.toLowerCase().trim() == dateToSearchFor.toLowerCase().trim())
+
+    buildTable(filterDates)
+
+});
