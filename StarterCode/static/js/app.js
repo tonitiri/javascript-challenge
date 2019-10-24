@@ -53,11 +53,11 @@ characterFilterButton.on("click", () => {
 // FILTERING TABLE BY SHAPES AND RESETTING
 shapeSearchField.on("keyup", () => {
     d3.event.preventDefault()
-    var dateToSearchFor = shapeSearchField.property("value");
-    console.log(dateToSearchFor);
+    var shapeToSearchFor = shapeSearchField.property("value");
+    console.log(shapeToSearchFor);
 
-    var filterDates = data.filter(ufo => ufo.shape.toLowerCase().trim() == dateToSearchFor.toLowerCase().trim())
+    var filterShapes = data.filter(ufo => ufo.shape.toLowerCase().trim() == shapeToSearchFor.toLowerCase().trim())
 
-    buildTable(filterDates)
+    buildTable(filterShapes)
 
 });
