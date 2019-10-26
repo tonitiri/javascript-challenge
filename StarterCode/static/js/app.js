@@ -55,8 +55,8 @@ shapeSearchField.on("keyup", () => {
     d3.event.preventDefault()
     var shapeToSearchFor = shapeSearchField.property("value");
     console.log(shapeToSearchFor);
-
-    var filterShapes = data.filter(ufo => ufo.shape.toLowerCase().trim() == shapeToSearchFor.toLowerCase().trim())
+    var characterDatevalue = characterDateField.property("value");
+    var filterShapes = data.filter(ufo => (ufo.shape.toLowerCase().trim() == shapeToSearchFor.toLowerCase().trim() && ufo.datetime == characterDatevalue))
 
     buildTable(filterShapes)
 
